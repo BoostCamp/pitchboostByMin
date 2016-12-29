@@ -20,14 +20,18 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     @IBAction func recordButton(_ sender: Any) {
-        
-        
+        print("fuck")
+        recordingLabel.text="Recording in Progress"
+    }
+    @IBOutlet weak var recordingLabel: UILabel!
+
+    @IBAction func stopRecording(_ sender: Any) {
         
         
         
     }
-
 
 }
 

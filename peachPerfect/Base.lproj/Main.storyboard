@@ -21,23 +21,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Touct to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjP-Va-G6u">
-                                <rect key="frame" x="124" y="412" width="126" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b2-gE-pf7" userLabel="Record">
+                                <rect key="frame" x="110" y="256" width="155" height="155"/>
+                                <state key="normal" image="Record"/>
+                                <connections>
+                                    <action selector="recordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EYT-z2-vmL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RjP-Va-G6u">
+                                <rect key="frame" x="133.5" y="412" width="107" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-NR-hc2">
-                                <rect key="frame" x="142" y="451" width="90" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIr-NR-hc2" userLabel="Stop Recording">
+                                <rect key="frame" x="130" y="455" width="114" height="114"/>
                                 <state key="normal" image="Stop"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9b2-gE-pf7">
-                                <rect key="frame" x="110" y="256" width="155" height="155"/>
-                                <state key="normal" image="Record"/>
                                 <connections>
-                                    <action selector="recordButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mps-q4-DVp"/>
+                                    <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PTP-gg-Tg5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,8 +46,15 @@
                         <constraints>
                             <constraint firstItem="9b2-gE-pf7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6aY-37-7cf"/>
                             <constraint firstItem="9b2-gE-pf7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Hze-sI-QtH"/>
+                            <constraint firstItem="mIr-NR-hc2" firstAttribute="centerX" secondItem="RjP-Va-G6u" secondAttribute="centerX" id="Ok6-2O-wtF"/>
+                            <constraint firstItem="RjP-Va-G6u" firstAttribute="centerX" secondItem="9b2-gE-pf7" secondAttribute="centerX" id="RAU-GV-tdL"/>
+                            <constraint firstItem="RjP-Va-G6u" firstAttribute="top" secondItem="9b2-gE-pf7" secondAttribute="bottom" constant="1" id="gQh-GM-gyJ"/>
+                            <constraint firstItem="mIr-NR-hc2" firstAttribute="top" secondItem="RjP-Va-G6u" secondAttribute="bottom" constant="18.5" id="zEo-jA-NFR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordingLabel" destination="RjP-Va-G6u" id="pAw-gU-P5C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
