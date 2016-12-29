@@ -39,7 +39,7 @@
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopRecording:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PTP-gg-Tg5"/>
-                                    <segue destination="8pc-7W-you" kind="show" id="mjM-Sa-Xxu"/>
+                                    <segue destination="8pc-7W-you" kind="push" id="Jij-UX-65Z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,6 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JxP-BJ-uky"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="peV-Gz-A05" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
