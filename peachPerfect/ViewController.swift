@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func recordButton(_ sender: Any) {
-        print("fuck")
         recordingLabel.text="Recording in Progress"
         stopRecordingButton.isEnabled=true
         recordButton.isEnabled=false
