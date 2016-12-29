@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         recordButton.isEnabled=true
         stopRecordingButton.isEnabled=false
         recordingLabel.text="Tap to Record"
-        
+        //ㅜㅜ
         
     }
 
