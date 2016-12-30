@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecordSoundsViewController.swift
 //  peachPerfect
 //
 //  Created by 오형민 on 2016. 12. 30..
@@ -8,7 +8,11 @@
 
 import UIKit
 import AVFoundation
-class ViewController: UIViewController {
+class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
+    
+    @IBOutlet weak var recordingLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var stopRecordingButton: UIButton!
 
     var audioRecorder:AVAudioRecorder!
     override func viewDidLoad() {
@@ -35,27 +39,37 @@ class ViewController: UIViewController {
         let recordingName = "recordedVoice.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
-        
+        print(filePath)
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
         
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
+        
+        audioRecorder.delegate=self
         audioRecorder.isMeteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
         
     }
-    @IBOutlet weak var recordingLabel: UILabel!
-    @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var stopRecordingButton: UIButton!
-
     @IBAction func stopRecording(_ sender: Any) {
         recordButton.isEnabled=true
         stopRecordingButton.isEnabled=false
         recordingLabel.text="Tap to Record"
         //ㅜㅜ
+        audioRecorder.stop()
+        let audioSession=AVAudioSession.sharedInstance()
+        try! audioSession.setActive(false)
         
     }
 
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("finished recording")
+    }
+    
+    
+    
+    
+    
+    
 }
 
