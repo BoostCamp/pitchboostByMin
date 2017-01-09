@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="1075.5" y="138.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Play Sounds View Controller-->
         <scene sceneID="hoN-sh-nG2">
             <objects>
-                <viewController id="8pc-7W-you" sceneMemberID="viewController">
+                <viewController id="8pc-7W-you" customClass="PlaySoundsViewController" customModule="peachPerfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Sg-69-pkw"/>
                         <viewControllerLayoutGuide type="bottom" id="yP9-ZY-LSi"/>
