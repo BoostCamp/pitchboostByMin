@@ -16,7 +16,6 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
 
     var audioRecorder:AVAudioRecorder!
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         stopRecordingButton.isEnabled=false
     }
@@ -24,10 +23,11 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    } //Deleted in Video
+    
     
     
     @IBAction func recordAudio(_ sender: Any) {
@@ -40,6 +40,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         let pathArray = [dirPath, recordingName]
         let filePath = URL(string: pathArray.joined(separator: "/"))
         print(filePath)
+        print(pathArray)
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
         
@@ -66,7 +67,15 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
 
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("finished recording")
-    }
+        if flag{
+        performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+        } else{
+            print("recording was not successful")
+        }
+        
+        
+        
+        }
     
     
     
