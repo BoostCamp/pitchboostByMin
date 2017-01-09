@@ -30,7 +30,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
     }
     
     
-    @IBAction func recordButton(_ sender: Any) {
+    @IBAction func recordAudio(_ sender: Any) {
         recordingLabel.text = "Recording in progress"
         stopRecordingButton.isEnabled = true
         recordButton.isEnabled = false
@@ -43,6 +43,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord, with:AVAudioSessionCategoryOptions.defaultToSpeaker)
         
+        
         try! audioRecorder = AVAudioRecorder(url: filePath!, settings: [:])
         
         audioRecorder.delegate=self
@@ -51,6 +52,7 @@ class RecordSoundsViewController: UIViewController,AVAudioRecorderDelegate {
         audioRecorder.record()
         
     }
+   
     @IBAction func stopRecording(_ sender: Any) {
         recordButton.isEnabled=true
         stopRecordingButton.isEnabled=false
