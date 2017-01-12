@@ -18,7 +18,8 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
-    
+    var clickCounter = 0
+    static var isPlaying=false
     
     var recordedAudioURL: URL!
     var audioFile:AVAudioFile!
@@ -34,24 +35,44 @@ class PlaySoundsViewController: UIViewController {
         switch(ButtonType(rawValue: sender.tag)!) {
         case .slow:
             playSound(rate: 0.5)
+            clickCounter+=1
         case .fast:
             playSound(rate: 1.5)
+            clickCounter+=1
+
         case .chipmunk:
             playSound(pitch: 1000)
+            clickCounter+=1
+
         case .vader:
             playSound(pitch: -1000)
+            clickCounter+=1
+
         case .echo:
             playSound(echo: true)
+            clickCounter+=1
+
         case .reverb:
             playSound(reverb: true)
+            clickCounter+=1
+
+            
+        }
+        print(clickCounter)
+        configureUI(.playing)
+      
+        if clickCounter == 20{
+            
+        }else if clickCounter>=30 {
+            
         }
         
-        configureUI(.playing)
+        
     }
+    
     
     @IBAction func stopButtonPressed(_ sender: AnyObject) {
         
-        print("Stop Audio Button Pressed")
         stopAudio()
     }
     
@@ -59,12 +80,14 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             setupAudio()
+       
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureUI(.notPlaying)
+     
     }
    
 }

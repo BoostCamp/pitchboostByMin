@@ -190,6 +190,51 @@
             </objects>
             <point key="canvasLocation" x="1993" y="139"/>
         </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="vD7-gV-9PG">
+            <objects>
+                <viewController id="kbR-MD-hyu" customClass="PopUpViewController" customModule="peachPerfect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E0B-SO-67k"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Ba-K7-Jck"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PhY-TO-FSF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPH-tx-HZL">
+                                <rect key="frame" x="67" y="237" width="240" height="193"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bwn-Sx-7ht">
+                                        <rect key="frame" x="97" y="137" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Close"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="굉장히 시간낭비 중이시네요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EP4-2p-G2K">
+                                        <rect key="frame" x="25" y="56" width="191" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" red="1" green="0.159334941348105" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.27350519394827588" blue="0.0012486093737952286" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NPH-tx-HZL" firstAttribute="centerX" secondItem="PhY-TO-FSF" secondAttribute="centerX" id="544-Dp-oy1"/>
+                            <constraint firstItem="NPH-tx-HZL" firstAttribute="centerY" secondItem="PhY-TO-FSF" secondAttribute="centerY" id="gmY-LM-hdC"/>
+                            <constraint firstItem="NPH-tx-HZL" firstAttribute="leading" secondItem="PhY-TO-FSF" secondAttribute="leadingMargin" constant="51" id="mya-yV-Hls"/>
+                            <constraint firstItem="NPH-tx-HZL" firstAttribute="top" secondItem="E0B-SO-67k" secondAttribute="bottom" constant="217" id="ukv-Kc-ZwP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w0c-Di-A9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2804" y="158"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7vS-uc-v4w">
             <objects>

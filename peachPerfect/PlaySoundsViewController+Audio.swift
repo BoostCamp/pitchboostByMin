@@ -125,7 +125,6 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         }
         
         configureUI(.notPlaying)
-        
         if let audioEngine = audioEngine {
             audioEngine.stop()
             audioEngine.reset()
@@ -147,9 +146,13 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         case .playing:
             setPlayButtonsEnabled(false)
             stopButton.isEnabled = true
+            PlaySoundsViewController.isPlaying=true
+
         case .notPlaying:
             setPlayButtonsEnabled(true)
             stopButton.isEnabled = false
+            PlaySoundsViewController.isPlaying=false
+
         }
     }
     
