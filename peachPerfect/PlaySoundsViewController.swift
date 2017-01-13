@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import WebKit
 
 class PlaySoundsViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class PlaySoundsViewController: UIViewController {
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
+    //var webView: WKWebView = WKWebView()
     
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
@@ -61,13 +63,35 @@ class PlaySoundsViewController: UIViewController {
         print(clickCounter)
         configureUI(.playing)
       
-        if clickCounter == 20{
-            
-        }else if clickCounter>=30 {
-            
+        if clickCounter == 10{
+            createAlert(title: "Warning!!", message: "당신의 시간이 \(clickCounter)번 만큼 낭비되고 있습니다")
+        }else if clickCounter>=20  {
+            createAlert2(title: "이제 그만 놀까요?", message: "UIKit에 대한 멋진 강좌가 당신을 기다리고 있어요!")
         }
         
         
+    }
+    
+    func createAlert (title : String, message : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func createAlert2 (title : String, message : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        //https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#
+        func openPageTowardUdacityUICource(action: UIAlertAction) {
+            if let url = URL(string: "https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#"){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else { print("fuckYou")
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title:"Go for it!", style: UIAlertActionStyle.default, handler:openPageTowardUdacityUICource))
+        alert.addAction(UIAlertAction(title:"No Thanks", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     
