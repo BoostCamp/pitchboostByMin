@@ -19,6 +19,11 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var echoButton: UIButton!
     @IBOutlet weak var reverbButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
+    
+    @IBOutlet weak var currentTimeLabel: UILabel!
+    
+    @IBOutlet weak var Slider: UISlider!
+    
     var clickCounter = 0
     static var isPlaying=false
     
@@ -27,7 +32,11 @@ class PlaySoundsViewController: UIViewController {
     var audioEngine:AVAudioEngine!
     var audioPlayerNode: AVAudioPlayerNode!
     var stopTimer: Timer!
+    var timer : AVAudioPlayer!
     //var webView: WKWebView = WKWebView()
+    
+    var pitchRateForNode: AVAudioUnitTimePitch!
+
     
     enum ButtonType: Int {
         case slow = 0, fast, chipmunk, vader, echo, reverb
@@ -62,6 +71,12 @@ class PlaySoundsViewController: UIViewController {
         }
         print(clickCounter)
         configureUI(.playing)
+        do {
+            timer = try AVAudioPlayer(contentsOf: recordedAudioURL as URL)
+        }
+        catch{
+            showAlert(Alerts.AudioFileError, message: String(describing: error))
+        }
       
         if clickCounter == 10{
             createAlert(title: "Warning!!", message: "당신의 시간이 \(clickCounter)번 만큼 낭비되고 있습니다")
@@ -71,27 +86,22 @@ class PlaySoundsViewController: UIViewController {
         
         
     }
-    
-    func createAlert (title : String, message : String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
+    @IBAction func audioController(_ sender: Any) {
+        
+        
+        //audioPlayerNode.nodeTime(forPlayerTime: AVAudioTime)
+        updateCurrentTime()
+        
+        
+        
+        
     }
-    func createAlert2 (title : String, message : String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+    
+    func updateCurrentTime(){
+        let playerTime = Slider.value
+        //let currentTimeInSec = Int(round(playerTime/pitchRateForNode.rate))
+        currentTimeLabel.text=String(playerTime)
         
-        //https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#
-        func openPageTowardUdacityUICource(action: UIAlertAction) {
-            if let url = URL(string: "https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#"){
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else { print("fuckYou")
-            }
-        }
-        
-        alert.addAction(UIAlertAction(title:"Go for it!", style: UIAlertActionStyle.default, handler:openPageTowardUdacityUICource))
-        alert.addAction(UIAlertAction(title:"No Thanks", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
-
-        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -113,5 +123,37 @@ class PlaySoundsViewController: UIViewController {
         configureUI(.notPlaying)
      
     }
-   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func createAlert (title : String, message : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title:"OK", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func createAlert2 (title : String, message : String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        //https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#
+        func openPageTowardUdacityUICource(action: UIAlertAction) {
+            if let url = URL(string: "https://classroom.udacity.com/courses/ud788/lessons/3499758725/concepts/36175187290923#"){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else { print("fuckYou")
+            }
+        }
+        
+        alert.addAction(UIAlertAction(title:"Go for it!", style: UIAlertActionStyle.default, handler:openPageTowardUdacityUICource))
+        alert.addAction(UIAlertAction(title:"No Thanks", style: UIAlertActionStyle.default, handler:{ (action) in alert.dismiss(animated: true, completion: nil)}))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }

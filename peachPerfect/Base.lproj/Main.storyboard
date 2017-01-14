@@ -144,9 +144,28 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fiq-Rn-c9T">
-                                                <rect key="frame" x="-2" y="389.5" width="347" height="130.5"/>
-                                            </slider>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DJM-Nc-o3K">
+                                                <rect key="frame" x="0.0" y="389.5" width="343" height="129.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tns-fX-OIL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFB-pD-8dc" userLabel="currentTimeLabel">
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fiq-Rn-c9T">
+                                                        <rect key="frame" x="-2" y="20.5" width="347" height="110"/>
+                                                        <connections>
+                                                            <action selector="audioController:" destination="8pc-7W-you" eventType="valueChanged" id="sBA-hM-9Mt"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vIu-pk-nhK">
@@ -180,7 +199,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="JxP-BJ-uky"/>
                     <connections>
+                        <outlet property="Slider" destination="Fiq-Rn-c9T" id="3fk-8t-soy"/>
                         <outlet property="chipmunkButton" destination="Mez-1T-kFQ" id="Gej-z9-UxY"/>
+                        <outlet property="currentTimeLabel" destination="AFB-pD-8dc" id="zs8-dz-yWw"/>
                         <outlet property="echoButton" destination="kiH-kr-O13" id="EOs-vb-ren"/>
                         <outlet property="rabbitButton" destination="aEd-wU-dWk" id="gTI-rJ-anJ"/>
                         <outlet property="reverbButton" destination="j7N-VP-wWl" id="Rbo-L0-lRG"/>
